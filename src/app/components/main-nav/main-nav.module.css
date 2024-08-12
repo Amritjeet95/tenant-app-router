@@ -1,0 +1,10 @@
+.mainNav {
+  background-color: #ffffff80;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form {
+  display: inline-block;
+}
