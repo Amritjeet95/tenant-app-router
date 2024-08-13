@@ -1,10 +1,12 @@
 import styles from "./main-nav.module.css";
-import NavLinks from "@/components/nav-links/NavLinks";
+import NavLinks from "@/app/components/nav-links/NavLinks";
 
 export default function MainNav() {
   return (
-    <>
-      <NavLinks />
+    <nav className={styles.mainNav}>
+      <div className={styles.navLinks}>
+        <NavLinks />
+      </div>
       <form
         className={styles.form}
         action={async () => {
@@ -13,6 +15,6 @@ export default function MainNav() {
       >
         <span className="">Sign Out</span>
       </form>
-    </>
+    </nav>
   );
 }
