@@ -2,9 +2,12 @@ import { redirect } from 'next/navigation';
 import './createRecord.css'
 import { db } from '@/app/db'
 import {routeTo} from '@/routes';
+import CreateRecordForm from "@/app/components/create-record-form/CreateRecordForm";
+
 export default function CreateRecordPage() {
 
   async function createRecord(formData: FormData){
+    'use server';
   // server components will not make it to the browser and they have benefits and downsides
   // Benefits:
   // 1. Faster load times
@@ -16,7 +19,6 @@ export default function CreateRecordPage() {
   // 2. Cannot use hooks like useState, useEffect, etc.
 
   // Mark it is a server action
-  'use server';
 
   // Get the data from the form and validate it
   const name = formData.get('name') as string;
@@ -36,17 +38,7 @@ export default function CreateRecordPage() {
   }
 
   return <div className="formWrapper">
-    <form action={createRecord}>
-      <h1>Create Record of Landlord/Tenant</h1>
-      <div className="inputWrapper">
-        <label htmlFor="name">Name</label>
-        <input type="text" name="name"/>
-      </div>
-      <div className="inputWrapper">
-        <label htmlFor="email">Email</label>
-        <input type="text" name="email"/>
-      </div>
-      <button type="submit">Create</button>
-    </form>
+
+    <CreateRecordForm createRecord={createRecord} />
   </div>
 }
